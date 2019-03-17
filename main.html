@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style>
+    body {
+      background-color: lightblue;
+    }
+    p{
+      text-align: center;
+
+    }
+    h1{
+      text-align: center;
+      color: red;
+    }
+
+    </style>
+    <meta charset="utf-8">
+    <title>User Login/Logout using DataStore
+    <link rel="stylesheet" type="text/css" href="table.css"></title>
+  </head>
+  <body>
+    {% if user %}
+    <h1 align: centre;><marquee>{{ welcome}} {{ user.email() }}!</marquee></h1>
+    <p align: centre;>To add new processor information  <a href="/edit">click here</a>
+    {% else %}
+    <p align: centre;>Hello guest, Welcome to the application</p>
+    {% endif %}
+    <p align: centre;>you can {{ url_string }} <a href="{{ url }}"> here</a></p>
+
+
+</p>
+  </body>
+</html>

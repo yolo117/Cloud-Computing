@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style media="screen">
+    body {
+      background-color: lightblue;
+    }
+    p{
+      text-align: center;
+
+    }
+    h1{
+      text-align: center;
+      color: red;
+    }
+    table.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.blueTable td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.blueTable tbody td {
+  font-size: 13px;
+}
+table.blueTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.blueTable thead {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.blueTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.blueTable thead th:first-child {
+  border-left: none;
+}
+
+table.blueTable tfoot {
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+table.blueTable tfoot td {
+  font-size: 18px;
+}
+table.blueTable tfoot .links {
+  text-align: right;
+}
+table.blueTable tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+    </style>
+    <meta charset="utf-8">
+    <title>update Processor information
+    </title>
+  </head>
+  <body >
+    <div class="tablediv">
+
+
+  <p>  Add the processors below.
+    <form action="/edit" method="post" class="tablediv">
+
+      <table class="blueTable" align="center">
+        <tr>
+        <td>Processor:</td>
+        <td><input type="text" name="proc_name" value="" required = "True" placeholder="Processor Name" /></td>
+        </tr>
+        <tr>
+          <td>Manufacturer:</td>
+          <td><input type="text" name="proc_manufacturer" value="" required="True" placeholder="Manufacturer Name"/></td>
+        </tr>
+        <tr>
+          <td>Date: </td>
+          <td><input type="date" name="proc_date" value="" placeholder="Date of Manufacture"required = "True"></td>
+        </tr>
+        <tr>
+          <td>GeometryShader: </td>
+          <td><input type="checkbox"    name="proc_geometry_shader" ></td>
+        </tr>
+        <tr>
+          <td>TesselationShader:</td>
+          <td><input type="checkbox" name="proc_Tess"  ></td>
+        </tr>
+        <tr>
+          <td>ShaderInt16:</td>
+          <td><input type="checkbox"       name="proc_int16"  ></td>
+        </tr>
+        <tr>
+          <td>SparseBinding:</td>
+          <td><input type="checkbox"     name="proc_sparse"  ></td>
+        </tr>
+        <tr>
+          <td>TextureCompressionETC2: </td>
+          <td><input type="checkbox" name="proc_texture"></td>
+        </tr>
+        <tr>
+          <td>VertexPipelineStoresAndAtomics: </td>
+          <td><input type="checkbox" name="proc_vert" ></td>
+        </tr>
+
+      </table>
+      </p>
+
+    <p>  <input type="submit" name="button" value="Add"/>
+    <p>  <form action="/edit" method="post">
+    <p>  <input type="submit" name="button" value="Cancel"/>
+      </form>
+      <!-- {% if error %}
+      <p color ="red">Processor already in the database. Kindly add a new Processor</p>
+      <!-- {% elif error == False %}
+      <p> Value has been added successfully to the database</p> -->
+      <!-- {% endif %} -->
+    </form>
+    <form action="/edit" method="get">
+{% if error %}
+<div class="error">
+  {{ error}}
+</div>
+{% endif %}
+<p><b>Select features to compare devices with selected features</b>
+  <table align='center'>
+    <tr>
+      <tr>
+
+        <td>GeometryShader: </td>
+        <td><input type="checkbox" name="geometry_shader"></td>
+      </tr>
+      <tr>
+        <td>TesselationShader</td>
+        <td><input type="checkbox" name="tesselation_shader"></td>
+      </tr>
+      <tr>
+        <td>ShaderInt16</td>
+        <td><input type="checkbox" name="shader_int16"></td>
+      </tr>
+      <tr>
+        <td>SparseBinding</td>
+        <td><input type="checkbox" name="sparse_binding"></td>
+      </tr>
+      <tr>
+        <td>TextureCompressionETC2</td>
+        <td><input type="checkbox" name="texture_compressionETC2"></td>
+      </tr>
+      <tr>
+        <td>vertexPipelineStoresAndAtomics</td>
+        <td><input type="checkbox" name="vertex_pipe_line"></td>
+      </tr>
+      <tr>
+        <td><input type="submit" name="button" value="Search"></td>
+      </tr>
+    </tr>
+  </table>
+    Processor Information: <br>
+    <table class="blueTable" border="4">
+      <tr>
+        <td><b>ID</b></td>
+        <td><b>Name</b></td>
+        <td><b>Manufacturer</b></td>
+        <td><b>Date</b></td>
+        <td><b>GeometryShader</b></td>
+        <td><b>TesselationShader</b></td>
+        <td><b>ShaderInt16</b></td>
+        <td><b>SparseBinding</b></td>
+        <td><b>TextureCompressionETC2</b></td>
+        <td><b>vertexPipelineStoresAndAtomics</b></td>
+<form action="/edit" method="get">
+
+        <td ><input type="submit" name="compare" onclick="location.href='/compare?value1={{ selected_procs }}''" value="Compare" > </td>
+
+      </tr>
+    {% if all_query %}
+    {% for i in all_query %}
+
+
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><a href="/details?name={{ i.name }}&index={{ loop.index-1 }}">{{ i.name }}</a>
+          <form action="/details"  method="post">
+            <input type="hidden" name="proc_name_details" value="{{ i.name }}">
+          </form>
+        </td>
+        <td>{{ i.manufacturer }}</td>
+        <td>{{ i.date }} </td>
+        <td>{{ i.geometryShader }}</td>
+        <td>{{ i.tesselationShader }}</td>
+        <td>{{ i.shaderInt16 }}</td>
+        <td>{{ i.sparseBinding }}</td>
+        <td> {{ i.textureCompressionETC2 }}</td>
+        <td>{{ i.vertexPipelineStoresAndAtomics }}</td>
+        <td>  <form action="/edit" method="post">
+            <input type="hidden" name="index" value="{{ loop.index-1}}">
+            </form>
+        <input type="checkbox" name="select_processor" value="{{ i.name }}" ></td>
+      </tr>
+</form>
+
+    {% endfor %}
+    {% endif %}
+</form>
+    </table>
+    </div>
+
+  </body>
+</html>
